@@ -8,7 +8,7 @@ We use parquet file here and create an external table for it; and then execute t
 
 The benchmark should be completed in under an hour. On-demand pricing is $0.6 per hour while spot pricing is only $0.2 to $0.3 per hour (us-east-2).
 
-1. manually start a AWS EC2 instance
+1. manually start a AWS EC2 instance for each instance type, for example:
     - `c6a.4xlarge`
     - Ubuntu 22.04 or later
     - Root 500GB gp2 SSD
@@ -20,7 +20,7 @@ The benchmark should be completed in under an hour. On-demand pricing is $0.6 pe
 1. `vi benchmark.sh` and modify following line to target Datafusion version
 
     ```bash
-    git checkout 46.0.0
+    git checkout 49.0.0
     ```
 
 1. `bash benchmark.sh`
