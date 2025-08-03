@@ -14,7 +14,7 @@ echo "Install DataFusion main branch"
 git clone https://github.com/apache/arrow-datafusion.git
 cd arrow-datafusion/
 git checkout 49.0.0
-CARGO_PROFILE_RELEASE_LTO=true RUSTFLAGS="-C codegen-units=1 target-cpu=native" cargo build --release --package datafusion-cli --bin datafusion-cli
+CARGO_PROFILE_RELEASE_LTO=true RUSTFLAGS="-C codegen-units=1" cargo build --release --package datafusion-cli --bin datafusion-cli
 export PATH="`pwd`/target/release:$PATH"
 cd ..
 
