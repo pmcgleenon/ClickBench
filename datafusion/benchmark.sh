@@ -1,10 +1,17 @@
 #!/bin/bash
 
 echo "Install Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rust-init.sh
-bash rust-init.sh -y
-export HOME=${HOME:=~}
-source ~/.cargo/env
+if command -v rustc &> /dev/null; then
+    echo "Rust is already installed: $(rustc --version)"
+    export HOME=${HOME:=~}
+    source ~/.cargo/env 2>/dev/null || true
+else
+    echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rust-init.sh
+    bash rust-init.sh -y
+    export HOME=${HOME:=~}
+    source ~/.cargo/env
+fi
 
 echo "Install Dependencies"
 sudo apt-get update -y
